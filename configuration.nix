@@ -18,6 +18,17 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   ##################################################
+  ## Boot Config
+  ##################################################
+
+  hardware.raspberry-pi."5".apply-overlays = true;
+
+  boot.loader.raspberryPi = {
+      enable = true;
+      version = 5;
+  }
+
+  ##################################################
   ## Networking
   ##################################################
 
