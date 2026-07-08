@@ -24,9 +24,9 @@
   hardware.raspberry-pi."5".apply-overlays = true;
 
   boot.loader.raspberryPi = {
-      enable = true;
-      version = 5;
-  }
+    enable = true;
+    version = 5;
+  };
 
   ##################################################
   ## Networking
