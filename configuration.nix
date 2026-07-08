@@ -30,7 +30,7 @@
   users.users.ryuzaki = {
     isNormalUser = true;
 
-    initialPassword = "your-password";
+    initialPassword = "39207395";
 
     extraGroups = [
       "wheel"
