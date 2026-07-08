@@ -1,0 +1,79 @@
+{ config, pkgs, ... }:
+
+{
+  imports = [
+    ./hardware.nix
+  ];
+
+  ##################################################
+  ## System
+  ##################################################
+
+  system.stateVersion = "26.05";
+
+  networking.hostName = "ryuzakipi";
+
+  time.timeZone = "Asia/Kolkata";
+
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  ##################################################
+  ## Networking
+  ##################################################
+
+  networking.networkmanager.enable = true;
+
+  ##################################################
+  ## User
+  ##################################################
+
+  users.users.ryuzaki = {
+    isNormalUser = true;
+
+    initialPassword = "your-password";
+
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
+  };
+
+  ##################################################
+  ## SSH
+  ##################################################
+
+  services.openssh = {
+    enable = true;
+
+    settings = {
+      PasswordAuthentication = true;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
+
+  ##################################################
+  ## Tailscale
+  ##################################################
+
+  services.tailscale.enable = true;
+
+  ##################################################
+  ## Packages
+  ##################################################
+
+  environment.systemPackages = with pkgs; [
+    git
+    vim
+    wget
+    curl
+    htop
+    tailscale
+  ];
+
+  ##################################################
+  ## Sudo
+  ##################################################
+
+  security.sudo.enable = true;
+}
